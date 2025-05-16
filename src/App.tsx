@@ -1,19 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './styles/index.sass'
-import UpperCanvas from './components/upperCanvas/UpperCanvas'
-import LowerCanvas from './components/lowerCanvas/LowerCanvas'
+import Welcome from './scenes/Welcome'
+import Game from './scenes/Game/Game'
+import ResultScreen from '././scenes/ResultScreen'
+import { Routes, Route } from 'react-router-dom'
+import Error from './components/Error'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <UpperCanvas />
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Welcome />} />
+      <Route path="/:difficulty" element={<Game />} />
+      <Route path="/results/:difficulty/" element={<ResultScreen/>} />
+      <Route path="*" element={<Error />} />
+    </Routes>
   )
 }
 
