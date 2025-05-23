@@ -1,6 +1,9 @@
 import UpperCanvas from './components/upperCanvas/UpperCanvas';
-import {NumberValueProvider, ResultValueProvider, TaskValueProvider} from "../../Context"
+import {NumberValueProvider} from "../../contexts/NumberContext";
+import {ResultValueProvider} from "../../contexts/ResultContext";
+import {TaskValueProvider} from "../../contexts/TaskContext";
 import {useParams} from "react-router-dom";
+import { OptionValueProvider } from '../../contexts/OptionContext';
 
 export default function Game() {
     const params = useParams();
@@ -13,7 +16,9 @@ export default function Game() {
            <NumberValueProvider>
                 <ResultValueProvider>
                     <TaskValueProvider>
-                        <UpperCanvas difficulty={difficulty}  />
+                        <OptionValueProvider>
+                            <UpperCanvas difficulty={difficulty}  />
+                        </OptionValueProvider>
                     </TaskValueProvider>
                 </ResultValueProvider>
             </NumberValueProvider>

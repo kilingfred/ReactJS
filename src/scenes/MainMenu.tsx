@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import UpperCanvas from "../components/upperCanvas/UpperCanvas";
-import { createRoot } from "react-dom/client";
+import { useNavigate } from "react-router-dom";
 export default function MainMenu() {
-    const [difficulty, setDifficulty] = useState("easy");
-
-    function startGame(difficulty = "easy") {
-        setDifficulty(difficulty);
-        const rootElement = document.getElementById("root");
-        if (rootElement) {
-            const root = createRoot(rootElement);
-            root.render(<UpperCanvas difficulty={difficulty} />);
-        }
+    const navigate = useNavigate();
+    
+    function startGame(difficulty: string) {
+       navigate(`/game/${difficulty}`);
     }
 
     return (
