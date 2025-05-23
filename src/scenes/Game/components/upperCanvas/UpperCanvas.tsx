@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useTimer from "./useTimer";
 import LowerCanvas from "../lowerCanvas/LowerCanvas";
-import { useNumberValue, useTaskValue, useResultValue } from "../../../../Context";
+import { useAppContext } from "../../../../Context";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 
@@ -11,8 +11,8 @@ interface UpperCanvasProps {
 
 export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
     const dispatch = useDispatch();
-    const { generateRandomNumber} = useNumberValue(); // Access NumberValue context
-    const { currentTask, maxTasks, taskDone } = useTaskValue(); // Access TaskValue context
+    const { generateRandomNumber} = useAppContext().numberValue; // Access NumberValue context
+    const { currentTask, maxTasks, taskDone } = useAppContext().taskValue; // Access TaskValue context
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [equationJSX, setEquationJSX] = useState<React.ReactNode>(null);
     const [correct, setCorrect] = useState(0); // Use state for correct answers
@@ -20,7 +20,7 @@ export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
     const [answer, setAnswer] = useState<number | null>(null); // Updated type to allow null
     const [numberDisplays, setNumberDisplays] = useState<React.ReactNode[]>([]);
     const timer = useTimer(300, isGameOver); // Pass isGameOver to stop the timer
-    const { setOperators, setNumbers, getResult, numbers, operators } = useResultValue(); // Access ResultValue context
+    const { setOperators, setNumbers, getResult, numbers, operators } = useAppContext().resultValue; // Access ResultValue context
     const operatorsConstants = ['+', '-', '*', '/'];
     const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
     useEffect(() => {
         setEquationJSX((prevEquation) => {
             // Replace the prevanswer in the equation with the selected answer
-            return generateEquationJSX(numbers.map(num => num.toString()), operators, answer);
+            return generateEquationJSX(numbers.map((num: { toString: () => any; }) => num.toString()), operators, answer);
         });
     }, [answer]);
 

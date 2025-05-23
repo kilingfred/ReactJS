@@ -1,4 +1,3 @@
-import './styles/index.sass'
 import Welcome from './scenes/Welcome'
 import Game from './scenes/Game/Game'
 import ResultScreen from '././scenes/ResultScreen'
@@ -6,6 +5,8 @@ import { Routes, Route } from 'react-router-dom'
 import Error from './components/Error'
 
 import Login from './scenes/Login'
+
+import './styles/index.sass'
 
 function App() {
   return (
