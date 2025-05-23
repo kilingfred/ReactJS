@@ -142,6 +142,7 @@ export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
                     setSelectedOption(selectedAnswer); // Update selectedOption
                     setAnswer(selectedAnswer); // Update answer
                 }}
+                difficulty={difficulty}
             />
             )}
             <button onClick={handleGuess}>Guess</button>
