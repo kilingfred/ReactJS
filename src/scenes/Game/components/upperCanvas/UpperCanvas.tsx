@@ -158,7 +158,7 @@ export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
         !isNaN(getResult()) && (
           <LowerCanvas
             result={getResult()}
-            onOptionSelect={(selectedAnswer) => {
+            onOptionSelect={(selectedAnswer: number) => {
               setSelectedOption(selectedAnswer); // Update selectedOption
               setAnswer(selectedAnswer); // Update answer
             }}
