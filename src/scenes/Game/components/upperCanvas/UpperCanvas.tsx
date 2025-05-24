@@ -73,7 +73,7 @@ export default function UpperCanvas({ difficulty = "easy" }: UpperCanvasProps) {
 
   // Update the equation whenever the answer changes
   useEffect(() => {
-    setEquationJSX((prevEquation) => {
+    setEquationJSX(() => {
       // Replace the prevanswer in the equation with the selected answer
       return generateEquationJSX(
         numbers.map((num: { toString: () => any }) => num.toString()),

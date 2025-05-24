@@ -29,8 +29,10 @@ export default function ResultScreen() {
       <p>Correct Answers: {correct}</p>
       <p>Time remaining: {time}</p>
       <p>Score: {score.toFixed(0)}</p>
-      <button onClick={() => navigate(`/${difficulty}`)}>Play Again</button>
-      <button onClick={() => navigate("/")}>Back To Main Menu</button>
+      <button onClick={() => navigate(`/game/${difficulty}`)}>
+        Play Again
+      </button>
+      <button onClick={() => navigate("/game/")}>Back To Main Menu</button>
     </div>
   );
 }
