@@ -48,3 +48,5 @@ export default tseslint.config({
   },
 })
 ```
+
+The link to hosting server https://heartfelt-licorice-3ae506.netlify.app/
